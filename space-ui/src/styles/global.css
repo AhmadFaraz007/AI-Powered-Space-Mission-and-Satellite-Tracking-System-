@@ -1,0 +1,56 @@
+/* Remove redundant @tailwind directives if index.css already has them */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@keyframes nasa-logo-shimmer {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 8px #a5b4fc); }
+  50% { filter: brightness(1.3) drop-shadow(0 0 24px #a5b4fc); }
+}
+
+/* Wrap custom utilities in @layer utilities */
+@layer utilities {
+  .animate-nasa-logo {
+    animation: nasa-logo-shimmer 2.5s infinite;
+  }
+}
+
+/* Vignette overlays for visual depth */
+.vignette-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 8vh;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+  z-index: 40;
+}
+.vignette-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 8vh;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  z-index: 40;
+}
+
+/* Wrap base styles in @layer base */
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] min-h-screen;
+  }
+}
+
+.glass-section {
+  background: rgba(30, 41, 59, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Optional: Subtle, colorful starfield tweaks can be made in the StarBackground component if needed */ 
